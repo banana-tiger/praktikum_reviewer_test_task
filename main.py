@@ -52,6 +52,8 @@ class CashCalculator(Calculator):
     USD_RATE = float(60)  # Курс доллар США.
     EURO_RATE = float(70)  # Курс Евро.
 
+    # Объявление констант заглавными буквами правильное, но при определении функции, аргументы лучше задать строчными
+    # буквами
     def get_today_cash_remained(self, currency,
                                 USD_RATE=USD_RATE, EURO_RATE=EURO_RATE):
         currency_type = currency
@@ -63,6 +65,7 @@ class CashCalculator(Calculator):
             cash_remained /= EURO_RATE
             currency_type = 'Euro'
         elif currency_type == 'rub':
+
             cash_remained == 1.00
             currency_type = 'руб'
         if cash_remained > 0:
@@ -77,5 +80,14 @@ class CashCalculator(Calculator):
                    ' твой долг - {0:.2f} {1}'.format(-cash_remained,
                                                      currency_type)
 
+    # При наследовании класса дочерний класс наследует от родителя все аттрибуты и методы
+    # В данном случае если мы хотим использовать логику метода get_week_stats() в дочернем классе CashCalculator,
+    # то нам нет необходимости его переопределять, он уже доступен для использования
     def get_week_stats(self):
         super().get_week_stats()
+
+
+if __name__ == '__main__':
+    record = Record(amount=10, comment='хлеб', date='13.04.2000')
+    pass
+
